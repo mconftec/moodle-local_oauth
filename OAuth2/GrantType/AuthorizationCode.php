@@ -48,13 +48,13 @@ class AuthorizationCode implements GrantTypeInterface
          * 4.1.3 - ensure that the "redirect_uri" parameter is present if the "redirect_uri" parameter was included in the initial authorization request
          * @uri - http://tools.ietf.org/html/rfc6749#section-4.1.3
          */
-        if (isset($authCode['redirect_uri']) && $authCode['redirect_uri']) {
-            if (!$request->request('redirect_uri') || urldecode($request->request('redirect_uri')) != $authCode['redirect_uri']) {
-                $response->setError(400, 'redirect_uri_mismatch', "The redirect URI is missing or do not match", "#section-4.1.3");
+        // if (isset($authCode['redirect_uri']) && $authCode['redirect_uri']) {
+        //     if (!$request->request('redirect_uri') || urldecode($request->request('redirect_uri')) != $authCode['redirect_uri']) {
+        //         $response->setError(400, 'redirect_uri_mismatch', "The redirect URI is missing or do not match", "#section-4.1.3");
 
-                return false;
-            }
-        }
+        //         return false;
+        //     }
+        // }
 
         if (!isset($authCode['expires'])) {
             throw new \Exception('Storage must return authcode with a value for "expires"');
